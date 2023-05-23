@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Todo-Incubator/static/css/main.bbb55728.css",
+    "main.js": "/Todo-Incubator/static/js/main.88afcb73.js",
+    "index.html": "/Todo-Incubator/index.html",
+    "main.bbb55728.css.map": "/Todo-Incubator/static/css/main.bbb55728.css.map",
+    "main.88afcb73.js.map": "/Todo-Incubator/static/js/main.88afcb73.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bbb55728.css",
+    "static/js/main.88afcb73.js"
+  ]
+}
