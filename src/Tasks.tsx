@@ -21,7 +21,7 @@ export const Tasks = ({data}: TasksProps) => {
         <div>
             <h1>{data.title}</h1>
             <ul>
-                {data.tasks.map(task => {
+                {data.tasks.map((task: TasksType) => {
                     return(
                         <li><input type="checkbox" checked={task.isDone}/>{task.title}</li>
                     )
