@@ -1,11 +1,4 @@
-import React from "react";
-
-type PropsType = {
-    truck: string,
-    truck2?: number,
-    truck3?: boolean,
-    tasks: TaskType[]
-}
+import React, {useState} from "react";
 
 type TaskType = {
     id: number,
@@ -14,16 +7,21 @@ type TaskType = {
 }
 
 
-export const Todolist = (props: PropsType) => {
+export const Todolist = () => {
+    const [data, setData] = useState<TaskType[]>([
+        {id: 0, title: 'What is it', isDone:true},
+        {id: 1, title: 'Dont give that', isDone:false}
+    ])
+
     return(
         <div>
-            <h3>{props.truck}</h3>
+            <h3>{}</h3>
             <div>
                 <input/>
                 <button>+</button>
             </div>
             <ul>
-                {props.tasks.map((item: TaskType) => <li><input type="checkbox" checked={item.isDone}/> <span>{item.title}</span></li>)}
+                {data.map((item: TaskType) => <li><input type="checkbox" checked={item.isDone}/> <span>{item.title}</span></li>)}
             </ul>
             <div>
                 <button>All</button>
