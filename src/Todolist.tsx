@@ -7,17 +7,14 @@ type TaskType = {
     isDone: boolean,
 }
 
-
 export const Todolist = () => {
     const [data, setData] = useState<TaskType[]>([
         {id: 0, title: 'What is it', isDone: true},
         {id: 1, title: 'Dont give that', isDone: false}
     ])
-
     const [filterData, setFilterData] = useState<TaskType[]>([])
-
     const [note, setNote] = useState<TaskType>({
-        id: data.length,
+        id: Date.now(),
         title: '',
         isDone: false
     })
@@ -27,7 +24,7 @@ export const Todolist = () => {
     }, [data])
 
     const addNote = () => {
-        setNote({id: data.length + 1, title: '', isDone: false})
+        setNote({id: Date.now(), title: '', isDone: false})
         setData([...data, note])
     }
 
@@ -47,6 +44,10 @@ export const Todolist = () => {
         setFilterData(data.filter(item => item.isDone))
     }
 
+    const changeCheckBoxTask = (task: TaskType) => {
+        setData(data.map((item: TaskType) => item.id === task.id ? {...item , isDone: !task.isDone} : item))
+    }
+
     return(
         <div>
             <h3>Notes</h3>
@@ -55,10 +56,10 @@ export const Todolist = () => {
                 <Button onClick={() => addNote()}>+</Button>
             </div>
             <ul>
-                {filterData.map((item: TaskType) =>
-                    <li key={item.id}><input type="checkbox" />
-                        <span>{item.title}</span>
-                        <Button onClick={() => removeTask(item.id)}>x</Button>
+                {filterData.map((task: TaskType) =>
+                    <li key={task.id}><input type="checkbox" checked={task.isDone} onChange={() => changeCheckBoxTask(task)}/>
+                        <span>{task.title}</span>
+                        <Button onClick={() => removeTask(task.id)}>x</Button>
                     </li>)}
             </ul>
             <div>
